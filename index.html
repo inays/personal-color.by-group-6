@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tes Personal Color 💫</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c7d2fe, #e0f2fe);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      color: #333;
+      transition: background 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #374151;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    form {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 350px;
+      width: 100%;
+      margin-top: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    select:focus {
+      border-color: #818cf8;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(129,140,248,0.2);
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(90deg, #818cf8, #6366f1);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.4s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #6366f1, #4f46e5);
+      transform: scale(1.03);
+    }
+
+    #result {
+      margin-top: 30px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .color-box {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .color {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.8);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .color:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #6b7280;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌈 Tes Personal Color Kamu</h1>
+  <form id="colorForm">
+    <label for="skin">Warna Kulit:</label>
+    <select id="skin" required>
+      <option value="">Pilih...</option>
+      <option value="terang">Terang</option>
+      <option value="sawo">Sawo matang</option>
+      <option value="gelap">Gelap</option>
+    </select>
+
+    <label for="hair">Warna Rambut:</label>
+    <select id="hair" required>
+      <option value="">Pilih...</option>
+      <option value="hitam">Hitam</option>
+      <option value="coklat">Coklat</option>
+      <option value="pirang">Pirang</option>
+      <option value="merah">Merah</option>
+    </select>
+
+    <label for="eyes">Warna Mata:</label>
+    <select id="eyes" required>
+      <option value="">Pilih...</option>
+      <option value="gelap">Gelap</option>
+      <option value="coklat">Coklat</option>
+      <option value="hijau">Hijau</option>
+      <option value="biru">Biru</option>
+    </select>
+
+    <button type="button" onclick="getPersonalColor()">✨ Lihat Hasil</button>
+  </form>
+
+  <div id="result"></div>
+
+  <footer>© 2025 Tes Personal Color – Dibuat dengan 💜 oleh kelompok 6</footer>
+
+  <script>
+    function getPersonalColor() {
+      const skin = document.getElementById('skin').value;
+      const hair = document.getElementById('hair').value;
+      const eyes = document.getElementById('eyes').value;
+      const resultDiv = document.getElementById('result');
+      const body = document.body;
+
+      if (!skin || !hair || !eyes) {
+        resultDiv.innerHTML = "⚠️ Silakan isi semua pilihan dulu ya!";
+        return;
+      }
+
+      let type = "";
+      let colors = [];
+      let bg = "";
+
+      // Logika sederhana berdasarkan kombinasi
+      if (skin === "terang" && (hair === "pirang" || eyes === "biru" || eyes === "hijau")) {
+        type = "🌷 Spring Type";
+        colors = ["#FFD580", "#FFB6C1", "#98FB98", "#87CEFA"];
+        bg = "linear-gradient(135deg, #FFF8DC, #FFDEE9)";
+      } 
+      else if (skin === "terang" && (hair === "coklat" || eyes === "coklat")) {
+        type = "🌸 Summer Type";
+        colors = ["#E6E6FA", "#C1E1C1", "#B0E0E6", "#FFDEAD"];
+        bg = "linear-gradient(135deg, #e0f7fa, #ede7f6)";
+      } 
+      else if (skin === "sawo" || (hair === "coklat" && eyes === "gelap")) {
+        type = "🍁 Autumn Type";
+        colors = ["#D2691E", "#CD853F", "#8B4513", "#F4A460"];
+        bg = "linear-gradient(135deg, #ffecd2, #fcb69f)";
+      } 
+      else if (skin === "gelap" || hair === "hitam") {
+        type = "❄️ Winter Type";
+        colors = ["#2F4F4F", "#4682B4", "#800000", "#708090"];
+        bg = "linear-gradient(135deg, #d7d2cc, #304352)";
+      } 
+      else {
+        type = "🌤️ Netral Mix Type";
+        colors = ["#D8BFD8", "#FFE4B5", "#E0FFFF", "#FFFACD"];
+        bg = "linear-gradient(135deg, #fafafa, #e0e0e0)";
+      }
+
+      body.style.background = bg;
+
+      let colorBoxes = colors.map(c => `<div class="color" style="background:${c}"></div>`).join("");
+      resultDiv.innerHTML = `
+        <div class="result-card">
+          <h2>${type}</h2>
+          <p>Warna yang cocok untuk kamu:</p>
+          <div class="color-box">${colorBoxes}</div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
+
