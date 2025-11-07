@@ -3,216 +3,198 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tes Personal Color 💫</title>
+  <title>Wardah Color Expert Style 💄</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #c7d2fe, #e0f2fe);
+      background: linear-gradient(to bottom, #f8caca, #f0b7b5, #e9a6a4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       min-height: 100vh;
+      color: #4a2f2f;
+      text-align: center;
+    }
+
+    header {
+      margin-top: 40px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      color: #6a3b3b;
+    }
+
+    h3 {
+      font-weight: 600;
+      margin-top: 8px;
+      color: #8b4a4a;
+    }
+
+    .container {
+      background: #8b3c3c;
+      border-radius: 10px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      margin-top: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      color: #fff;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .status-box {
+      background: #fff;
+      color: #8b3c3c;
+      border-radius: 8px;
+      padding: 10px 15px;
+      text-align: center;
+      width: 130px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .status-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-value {
+      margin-top: 5px;
+      font-size: 1rem;
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .face-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      padding: 20px;
-      color: #333;
-      transition: background 1s ease-in-out;
+      margin-bottom: 20px;
+      position: relative;
     }
 
-    h1 {
-      font-size: 2em;
-      color: #374151;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    video {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px dashed rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.1);
+      object-fit: cover;
+      padding: 5px;
+      transition: transform 0.4s ease;
     }
 
-    form {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      padding: 30px;
-      max-width: 350px;
-      width: 100%;
-      margin-top: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    form:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: 600;
-    }
-
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      transition: border 0.3s;
-    }
-
-    select:focus {
-      border-color: #818cf8;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(129,140,248,0.2);
+    video:hover {
+      transform: scale(1.05);
     }
 
     button {
-      width: 100%;
-      background: linear-gradient(90deg, #818cf8, #6366f1);
-      color: white;
+      background-color: #b66b6b;
       border: none;
-      padding: 12px;
-      border-radius: 12px;
-      margin-top: 20px;
-      font-size: 16px;
+      color: white;
+      padding: 14px 60px;
+      font-size: 1.1rem;
       font-weight: 600;
+      border-radius: 50px;
       cursor: pointer;
-      transition: background 0.4s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
-      background: linear-gradient(90deg, #6366f1, #4f46e5);
-      transform: scale(1.03);
+      background-color: #9d5555;
+      transform: translateY(-2px);
     }
 
-    #result {
-      margin-top: 30px;
-      text-align: center;
-      animation: fadeIn 1s ease;
-    }
-
-    .color-box {
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      color: #8b3c3c;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
-
-    .color {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      border: 2px solid rgba(255,255,255,0.8);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .color:hover {
-      transform: rotate(10deg) scale(1.1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      align-items: center;
+      gap: 5px;
     }
 
     footer {
-      margin-top: 40px;
-      color: #6b7280;
-      font-size: 0.9em;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #7a4b4b;
+    }
+
+    .error {
+      color: #ffdddd;
+      background: rgba(255, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🌈 Tes Personal Color Kamu</h1>
-  <form id="colorForm">
-    <label for="skin">Warna Kulit:</label>
-    <select id="skin" required>
-      <option value="">Pilih...</option>
-      <option value="terang">Terang</option>
-      <option value="sawo">Sawo matang</option>
-      <option value="gelap">Gelap</option>
-    </select>
+  <div class="back-btn">⬅️ BACK</div>
 
-    <label for="hair">Warna Rambut:</label>
-    <select id="hair" required>
-      <option value="">Pilih...</option>
-      <option value="hitam">Hitam</option>
-      <option value="coklat">Coklat</option>
-      <option value="pirang">Pirang</option>
-      <option value="merah">Merah</option>
-    </select>
+  <header>
+    <h3>Wardah COLOR EXPERT</h3>
+    <h2>TIPS FOR IDEAL<br>CAMERA POSITION</h2>
+  </header>
 
-    <label for="eyes">Warna Mata:</label>
-    <select id="eyes" required>
-      <option value="">Pilih...</option>
-      <option value="gelap">Gelap</option>
-      <option value="coklat">Coklat</option>
-      <option value="hijau">Hijau</option>
-      <option value="biru">Biru</option>
-    </select>
+  <div class="container">
+    <div class="status-row">
+      <div class="status-box">
+        <div class="status-title">LIGHTING CHECK</div>
+        <div class="status-value" id="lighting">GOOD</div>
+      </div>
+      <div class="status-box">
+        <div class="status-title">LOOK STRAIGHT</div>
+        <div class="status-value" id="look">GOOD</div>
+      </div>
+      <div class="status-box">
+        <div class="status-title">POSITION FACE</div>
+        <div class="status-value" id="position">GOOD</div>
+      </div>
+    </div>
 
-    <button type="button" onclick="getPersonalColor()">✨ Lihat Hasil</button>
-  </form>
+    <div class="face-container">
+      <video id="camera" autoplay playsinline></video>
+    </div>
 
-  <div id="result"></div>
+    <button onclick="startCamera()">Start</button>
+    <div id="errorMsg" class="error" style="display:none;"></div>
+  </div>
 
-  <footer>© 2025 Tes Personal Color – Dibuat dengan 💜 oleh kelompok 6</footer>
+  <footer>© 2025 Personal Color by Kelompok 6 💖</footer>
 
   <script>
-    function getPersonalColor() {
-      const skin = document.getElementById('skin').value;
-      const hair = document.getElementById('hair').value;
-      const eyes = document.getElementById('eyes').value;
-      const resultDiv = document.getElementById('result');
-      const body = document.body;
+    async function startCamera() {
+      const video = document.getElementById('camera');
+      const errorMsg = document.getElementById('errorMsg');
 
-      if (!skin || !hair || !eyes) {
-        resultDiv.innerHTML = "⚠️ Silakan isi semua pilihan dulu ya!";
-        return;
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        errorMsg.style.display = "none";
+      } catch (err) {
+        errorMsg.style.display = "block";
+        errorMsg.innerText = "❌ Kamera tidak dapat diakses. Pastikan izin kamera diaktifkan.";
       }
-
-      let type = "";
-      let colors = [];
-      let bg = "";
-
-      // Logika sederhana berdasarkan kombinasi
-      if (skin === "terang" && (hair === "pirang" || eyes === "biru" || eyes === "hijau")) {
-        type = "🌷 Spring Type";
-        colors = ["#FFD580", "#FFB6C1", "#98FB98", "#87CEFA"];
-        bg = "linear-gradient(135deg, #FFF8DC, #FFDEE9)";
-      } 
-      else if (skin === "terang" && (hair === "coklat" || eyes === "coklat")) {
-        type = "🌸 Summer Type";
-        colors = ["#E6E6FA", "#C1E1C1", "#B0E0E6", "#FFDEAD"];
-        bg = "linear-gradient(135deg, #e0f7fa, #ede7f6)";
-      } 
-      else if (skin === "sawo" || (hair === "coklat" && eyes === "gelap")) {
-        type = "🍁 Autumn Type";
-        colors = ["#D2691E", "#CD853F", "#8B4513", "#F4A460"];
-        bg = "linear-gradient(135deg, #ffecd2, #fcb69f)";
-      } 
-      else if (skin === "gelap" || hair === "hitam") {
-        type = "❄️ Winter Type";
-        colors = ["#2F4F4F", "#4682B4", "#800000", "#708090"];
-        bg = "linear-gradient(135deg, #d7d2cc, #304352)";
-      } 
-      else {
-        type = "🌤️ Netral Mix Type";
-        colors = ["#D8BFD8", "#FFE4B5", "#E0FFFF", "#FFFACD"];
-        bg = "linear-gradient(135deg, #fafafa, #e0e0e0)";
-      }
-
-      body.style.background = bg;
-
-      let colorBoxes = colors.map(c => `<div class="color" style="background:${c}"></div>`).join("");
-      resultDiv.innerHTML = `
-        <div class="result-card">
-          <h2>${type}</h2>
-          <p>Warna yang cocok untuk kamu:</p>
-          <div class="color-box">${colorBoxes}</div>
-        </div>
-      `;
     }
   </script>
 </body>
 </html>
-
